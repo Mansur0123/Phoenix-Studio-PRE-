@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineVault – Deine Filmdatenbank</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<nav>
+  <div class="logo">Pho<span>enix</span></div>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Filme &amp; Serien suchen…"
+           onkeydown="if(event.key==='Enter') doSearch()" />
+    <button onclick="doSearch()">Suchen</button>
+  </div>
+  <div class="nav-links">
+    <button class="nav-btn" id="navWatchlist" onclick="showWatchlist()">🔖 Watchlist</button>
+    <button class="nav-btn" id="navBewertungen" onclick="showBewertungen()">⭐ Meine Bewertungen</button>
+  </div>
+</nav>
+
+
+<div class="filters">
+  <span class="filter-label">Typ:</span>
+  <div class="filter-group">  
+    <button class="filter-chip active" onclick="setType(this,'all')">Alle</button>
+    <button class="filter-chip" onclick="setType(this,'movie')">🎬 Filme</button>
+    <button class="filter-chip" onclick="setType(this,'tv')">📺 Serien</button>
+  </div>
+  <span class="filter-label">Sortieren:</span>
+  <select class="fsel" id="sortSel" onchange="applySort()">
+    <option value="popularity">Beliebtheit</option>
+    <option value="rating">TMDB Bewertung</option>
+    <option value="name">Name (A–Z)</option>
+    <option value="year">Erscheinungsjahr</option>
+  </select>
+  <button class="reset-btn" onclick="resetFilters()">✕ Reset</button>
+</div>
+
+
+<main>
+  <div class="section-title">Trending Today <small id="resultCount"></small></div>
+  <div id="content"></div>
+  <div class="footer-note">Daten bereitgestellt von <strong>TMDB</strong> – The Movie Database</div>
+</main>
+
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
+  <div class="modal">
+    <div class="modal-top">
+      <img id="mPoster" class="modal-poster" src="" alt="">
+      <div class="modal-info">
+        <div class="modal-toprow">
+          <h2 class="modal-title" id="mTitle"></h2>
+          <button class="close-btn" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-tags" id="mTags"></div>
+        <div class="modal-meta-row" id="mMeta"></div>
+        <div style="margin-bottom:0.5rem">
+          <div class="tmdb-big" id="mScore">–</div>
+          <div class="tmdb-big-label">TMDB Score</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-label">Beschreibung</div>
+      <p class="modal-desc" id="mDesc"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-primary" id="btnWatchlist" onclick="toggleWatchlist()">🔖 Zur Watchlist</button>
+      <button class="btn-secondary" onclick="closeModal()">Schließen</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
