@@ -1,22 +1,20 @@
 import { apiFetch, showLoading, showError } from './api.js';
 import { renderGrid } from './cards.js';
-import { setItems, filterItems, setType, applySort } from './filters.js';
-import { openModal, closeModal, toggleWatchlist } from './modal.js';
+import { setItems, filterItems, setType, applySort, currentType } from './filters.js';
+import { closeModal } from './modal.js';
 
+// ── EXPOSE GLOBALS (needed by inline HTML onclick handlers) ──
 
-window.openModal      = openModal;
-window.closeModal     = closeModal;
-window.toggleWatchlist = toggleWatchlist;
-window.setType        = setType;
-window.applySort      = applySort;
-window.doSearch       = doSearch;
-window.resetFilters   = resetFilters;
-window.showWatchlist  = showWatchlist;
-window.showBewertungen = showBewertungen;
+window.closeModal  = closeModal;
+window.setType     = setType;
+window.applySort   = applySort;
+window.doSearch    = doSearch;
+window.resetFilters = resetFilters;
 
-
+// ── INIT ─────────────────────────────────────────────────
 window.onload = () => loadTrending();
 
+// ── LOAD TRENDING ─────────────────────────────────────────
 async function loadTrending() {
   showLoading();
   try {
@@ -30,13 +28,12 @@ async function loadTrending() {
     ];
     setItems(items);
     renderGrid(filterItems());
-  } catch {
-
-    showError('Trending konnte nicht geladen werden.');
+  } catch (e) {
+    showError('TMDB konnte nicht geladen werden: ' + e.message);
   }
 }
 
-
+// ── SEARCH ────────────────────────────────────────────────
 async function doSearch() {
   const q = document.getElementById('searchInput').value.trim();
   if (!q) { loadTrending(); return; }
@@ -48,38 +45,15 @@ async function doSearch() {
     document.querySelector('.section-title').innerHTML =
       `Ergebnisse für „${q}" <small id="resultCount"></small>`;
     renderGrid(filterItems());
-  } catch {
-    showError('Suche konnte nicht ausgeführt werden.');
+  } catch (e) {
+    showError('Suche fehlgeschlagen.');
   }
 }
 
-
+// ── RESET ─────────────────────────────────────────────────
 function resetFilters() {
   document.querySelectorAll('.filter-chip').forEach((c, i) => c.classList.toggle('active', i === 0));
   document.getElementById('sortSel').value     = 'popularity';
   document.getElementById('searchInput').value = '';
-  document.querySelector('.section-title').innerHTML =
-    `Trending Today <small id="resultCount"></small>`;
   loadTrending();
-}
-
-function showWatchlist() {
-  document.querySelector('.section-title').innerHTML =
-    `Meine Watchlist <small id="resultCount"></small>`;
-  const watchlist = JSON.parse(localStorage.getItem('watchlist') || '[]');
-  setItems(watchlist);
-  renderGrid(filterItems());
-  document.getElementById('navWatchlist').classList.add('active');
-  document.getElementById('navBewertungen').classList.remove('active');
-}
-
-
-function showBewertungen() {
-  document.querySelector('.section-title').innerHTML =
-    `Meine Bewertungen <small id="resultCount"></small>`;
-
-  document.getElementById('content').innerHTML =
-    `<div class="empty"><div class="empty-icon">⭐</div><h3>Noch keine Bewertungen</h3><p>Öffne einen Film oder eine Serie und bewerte ihn.</p></div>`;
-  document.getElementById('navBewertungen').classList.add('active');
-  document.getElementById('navWatchlist').classList.remove('active');
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CineVault – Deine Filmdatenbank</title>
+<title>Phoenix – Deine Filmdatenbank</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -18,8 +18,7 @@
     <button onclick="doSearch()">Suchen</button>
   </div>
   <div class="nav-links">
-    <button class="nav-btn" id="navWatchlist" onclick="showWatchlist()">🔖 Watchlist</button>
-    <button class="nav-btn" id="navBewertungen" onclick="showBewertungen()">⭐ Meine Bewertungen</button>
+    <button class="nav-btn active" id="navMain">🎬 Entdecken</button>
   </div>
 </nav>
 
@@ -41,14 +40,14 @@
   <button class="reset-btn" onclick="resetFilters()">✕ Reset</button>
 </div>
 
-
+<!-- ── MAIN ── -->
 <main>
   <div class="section-title">Trending Today <small id="resultCount"></small></div>
   <div id="content"></div>
   <div class="footer-note">Daten bereitgestellt von <strong>TMDB</strong> – The Movie Database</div>
 </main>
 
-
+<!-- ── MODAL ── -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
   <div class="modal">
     <div class="modal-top">
@@ -71,13 +70,12 @@
       <p class="modal-desc" id="mDesc"></p>
     </div>
     <div class="modal-footer">
-      <button class="btn-primary" id="btnWatchlist" onclick="toggleWatchlist()">🔖 Zur Watchlist</button>
       <button class="btn-secondary" onclick="closeModal()">Schließen</button>
     </div>
   </div>
 </div>
 
-
+<!-- ── TOAST ── -->
 <div class="toast" id="toast"></div>
 
 <script type="module" src="main.js"></script>

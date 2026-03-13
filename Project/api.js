@@ -1,10 +1,10 @@
-
+// ── CONFIG ────────────────────────────────────────────────
 const API_KEY = '1007519da66987ea4598d9e2e7a97bcc';
 const BASE    = 'https://api.themoviedb.org/3';
 export const IMG_SM = 'https://image.tmdb.org/t/p/w500';
 export const IMG_LG = 'https://image.tmdb.org/t/p/w780';
 
-
+// ── API ───────────────────────────────────────────────────
 export async function apiFetch(path) {
   const sep = path.includes('?') ? '&' : '?';
   const res = await fetch(`${BASE}${path}${sep}api_key=${API_KEY}`);
@@ -12,7 +12,7 @@ export async function apiFetch(path) {
   return res.json();
 }
 
-
+// ── HELPERS ───────────────────────────────────────────────
 export function escHtml(s) {
   return String(s)
     .replace(/&/g, '&amp;')
@@ -30,12 +30,10 @@ export function showToast(msg) {
 
 export function showLoading() {
   document.getElementById('content').innerHTML =
-    `<div class="loading"><div class="spinner"></div><div>Lade Daten…</div></div>`;
+    `<div class="loading"><div class="spinner"></div><div>Lade Daten von TMDB…</div></div>`;
 }
 
-
 export function showError(msg) {
-  console.warn('[CineVault]', msg);
   document.getElementById('content').innerHTML =
-    `<div class="empty"><div class="empty-icon">🎬</div><h3>Keine Inhalte gefunden</h3><p>Versuch es gleich nochmal.</p></div>`;
+    `<div class="empty"><div class="empty-icon">⚠️</div><h3>Fehler</h3><p>${msg}</p></div>`;
 }
