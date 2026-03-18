@@ -7,30 +7,137 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif}
 
-/* NAVBAR (unverändert) */
-nav{
-position:sticky;top:0;z-index:100;
-background:rgba(10,10,15,.95);backdrop-filter:blur(20px);
-border-bottom:1px solid var(--border);
-padding:0 2rem;display:flex;align-items:center;gap:1.5rem;height:64px
+/* NAVBAR */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(10,10,15,.96);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 0.9rem 2rem;
 }
-.logo{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:2px;color:var(--accent)}
-.logo span{color:var(--accent2)}
-.search-bar{flex:1;max-width:500px;display:flex;background:var(--surface2);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.search-bar:focus-within{border-color:var(--accent)}
-.search-bar input{flex:1;background:transparent;border:none;outline:none;color:var(--text);padding:.6rem 1rem}
-.search-bar input::placeholder{color:var(--muted)}
-.search-bar button{background:var(--accent);border:none;padding:0 1.2rem;font-weight:700;cursor:pointer}
-.search-bar button:hover{background:#f5d454}
-.nav-links{display:flex;gap:.5rem;margin-left:auto}
-.nav-btn{background:transparent;border:1px solid var(--border);color:var(--text);padding:.4rem 1rem;border-radius:6px;cursor:pointer}
-.nav-btn:hover,.nav-btn.active{background:var(--surface2);border-color:var(--accent);color:var(--accent)}
+
+.topbar-inner{
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+/* Ganze runde Navbar links */
+.nav-pillbar{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 999px;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* PHOENIX direkt in navbar */
+.pill-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  padding: 0 1rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Buttons / Texte in navbar */
+.nav-pill{
+  height: 48px;
+  padding: 0 1.2rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.nav-pill.active{
+  border: none;
+  cursor: pointer;
+  color: #111;
+  background: linear-gradient(135deg, var(--accent), #f5d454);
+  box-shadow:
+    0 0 18px rgba(232,197,71,0.40),
+    0 4px 18px rgba(232,197,71,0.24);
+}
+
+.nav-pill.active:hover{
+  filter: brightness(1.05);
+}
+
+.nav-pill.ghost{
+  color: #d3d6e4;
+  opacity: 0.9;
+  pointer-events: none;   /* nicht klickbar */
+  user-select: none;
+}
+
+/* Suche rechts */
+.search-bar{
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  background: #d8dde7;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.search-bar input{
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #111;
+  padding: 0.9rem 1rem;
+  font-size: 0.95rem;
+}
+
+.search-bar input::placeholder{
+  color: #5f6673;
+}
+
+.search-bar button{
+  background: linear-gradient(135deg, var(--accent), #f5d454);
+  color: #111;
+  border: none;
+  padding: 0 1.35rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-bar button:hover{
+  filter: brightness(1.05);
+}
 
 /* FILTER */
 .filters{
-padding:1rem 2rem;background:var(--surface);
-border-bottom:1px solid var(--border);
-display:flex;gap:.6rem;flex-wrap:wrap;align-items:center
+  position: sticky;
+  top: 82px;
+  z-index: 190;
+  padding: 0.9rem 2rem;
+  background: rgba(18,18,26,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+  align-items:center;
 }
 .filter-chip{
 background:var(--surface2);border:1px solid var(--border);
@@ -70,7 +177,11 @@ background:#111;
 
 
 /* MAIN */
-main{padding:2rem;max-width:1200px;margin:auto}
+main{
+  padding: 2rem;
+  max-width: 1400px;
+  margin: auto;
+}
 .section-title{
 font-family:'Bebas Neue',sans-serif;
 font-size:2rem;letter-spacing:2px;margin-bottom:1rem
