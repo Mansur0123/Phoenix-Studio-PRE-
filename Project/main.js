@@ -55,5 +55,6 @@ function resetFilters() {
   document.querySelectorAll('.filter-chip').forEach((c, i) => c.classList.toggle('active', i === 0));
   document.getElementById('sortSel').value     = 'popularity';
   document.getElementById('searchInput').value = '';
+  document.querySelector('.section-title').innerHTML = 'Trending Today <small id="resultCount"></small>';
   loadTrending();
 }
