@@ -56,31 +56,10 @@
   <div id="content"></div>
 </main>
 
-<!-- ── MODAL ── -->
+<!-- ── MODAL (GEÄNDERT) ── -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
   <div class="modal">
-    <div class="modal-top">
-      <img id="mPoster" class="modal-poster" src="" alt="">
-      <div class="modal-info">
-        <div class="modal-toprow">
-          <h2 class="modal-title" id="mTitle"></h2>
-          <button class="close-btn" onclick="closeModal()">✕</button>
-        </div>
-        <div class="modal-tags" id="mTags"></div>
-        <div class="modal-meta-row" id="mMeta"></div>
-        <div style="margin-bottom:0.5rem">
-          <div class="tmdb-big" id="mScore">–</div>
-          <div class="tmdb-big-label">TMDB Score</div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-section-label">Beschreibung</div>
-      <p class="modal-desc" id="mDesc"></p>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-secondary" onclick="closeModal()">Schließen</button>
-    </div>
+    <div id="modalContent"></div>
   </div>
 </div>
 

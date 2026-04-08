@@ -34,7 +34,7 @@ export function buildCard(item, i) {
     <div class="card-title">${escHtml(title)}</div>
     <div class="card-meta">
       <span>${year || '–'}</span>
-      <span class="tmdb-score">⭐ ${score}</span>
+      <span class="tmdb-score">${score}</span>
     </div>
   </div>
 </div>`;

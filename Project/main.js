@@ -1,15 +1,18 @@
 import { apiFetch, showLoading, showError } from './api.js';
 import { renderGrid } from './cards.js';
 import { setItems, filterItems, setType, applySort, currentType } from './filters.js';
-import { closeModal } from './modal.js';
+import { closeModal, openModal, setRating, saveReview, deleteReview } from './modal.js';
 
 // ── EXPOSE GLOBALS (needed by inline HTML onclick handlers) ──
-
 window.closeModal  = closeModal;
+window.openModal   = openModal;
 window.setType     = setType;
 window.applySort   = applySort;
 window.doSearch    = doSearch;
 window.resetFilters = resetFilters;
+window.setRating   = setRating;
+window.saveReview  = saveReview;
+window.deleteReview = deleteReview;
 
 // ── INIT ─────────────────────────────────────────────────
 window.onload = () => loadTrending();
