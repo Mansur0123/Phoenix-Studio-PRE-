@@ -13,12 +13,13 @@
 <nav class="topbar">
   <div class="topbar-inner">
     <div class="nav-pillbar">
-      <div class="pill-logo">PHOENIX</div>
+      <div class="pill-logo">
+  <span class="logo-left">PHO</span><span class="logo-right">ENIX</span>
+</div>
 
-      <button class="nav-pill active" id="navMain">🎬 Entdecken</button>
+      <button class="nav-pill active" id="navMain" onclick="goHome()">🎬 Entdecken</button>
 
-      <span class="nav-pill ghost">🔥 Trending</span>
-      <span class="nav-pill ghost">⭐ Top Rated</span>
+      <button class="nav-pill active watchlist-btn" onclick="showWatchlistToast()">🔖 Watchlist</button>
     </div>
 
     <div class="search-bar">
@@ -34,20 +35,36 @@
 </nav>
 
 <div class="filters">
-  <span class="filter-label">Typ:</span>
-  <div class="filter-group">  
-    <button class="filter-chip active" onclick="setType(this,'all')">Alle</button>
-    <button class="filter-chip" onclick="setType(this,'movie')">🎬 Filme</button>
-    <button class="filter-chip" onclick="setType(this,'tv')">📺 Serien</button>
+  <div class="filter-group-row">
+
+    <div class="filter-dropdown-wrap">
+      <label class="filter-label">Typ</label>
+      <div class="custom-select-wrap">
+        <select class="custom-select" id="typeSel" onchange="applyTypeFilter(this)">
+          <option value="all">Alle</option>
+          <option value="movie">🎬 Filme</option>
+          <option value="tv">📺 Serien</option>
+        </select>
+        <span class="select-arrow">▾</span>
+      </div>
+    </div>
+
+    <div class="filter-dropdown-wrap">
+      <label class="filter-label">Sortieren</label>
+      <div class="custom-select-wrap">
+        <select class="custom-select" id="sortSel" onchange="applySort()">
+          <option value="" selected>Category</option>
+          <option value="popularity">🔥 Beliebtheit</option>
+          <option value="rating">⭐ TMDB Bewertung</option>
+          <option value="name">🔤 Name (A–Z)</option>
+          <option value="year">📅 Erscheinungsjahr</option>
+        </select>
+        <span class="select-arrow">▾</span>
+      </div>
+    </div>
+
+    <button class="reset-btn" onclick="resetFilters()">✕ Reset</button>
   </div>
-  <span class="filter-label">Sortieren:</span>
-  <select class="fsel" id="sortSel" onchange="applySort()">
-    <option value="popularity">Beliebtheit</option>
-    <option value="rating">TMDB Bewertung</option>
-    <option value="name">Name (A–Z)</option>
-    <option value="year">Erscheinungsjahr</option>
-  </select>
-  <button class="reset-btn" onclick="resetFilters()">✕ Reset</button>
 </div>
 
 <!-- ── MAIN ── -->

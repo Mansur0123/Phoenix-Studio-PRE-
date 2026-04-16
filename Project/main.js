@@ -13,9 +13,35 @@ window.resetFilters = resetFilters;
 window.setRating   = setRating;
 window.saveReview  = saveReview;
 window.deleteReview = deleteReview;
+window.goHome      = goHome;
+window.applyTypeFilter = applyTypeFilter;
+window.showWatchlistToast = showWatchlistToast;
 
 // ── INIT ─────────────────────────────────────────────────
 window.onload = () => loadTrending();
+
+// ── GO HOME (Entdecken-Button) ────────────────────────────
+function goHome() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('sortSel').value = 'popularity';
+  document.getElementById('typeSel').value = 'all';
+  setType(null, 'all');
+  document.querySelector('.section-title').innerHTML = 'Trending Today <small id="resultCount"></small>';
+  loadTrending();
+}
+
+// ── WATCHLIST TOAST ───────────────────────────────────────
+function showWatchlistToast() {
+  const t = document.getElementById('toast');
+  t.textContent = '🔖 Watchlist kommt bald!';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── TYPE FILTER VIA DROPDOWN ──────────────────────────────
+function applyTypeFilter(sel) {
+  setType(null, sel.value);
+}
 
 // ── LOAD TRENDING ─────────────────────────────────────────
 async function loadTrending() {
@@ -55,9 +81,10 @@ async function doSearch() {
 
 // ── RESET ─────────────────────────────────────────────────
 function resetFilters() {
-  document.querySelectorAll('.filter-chip').forEach((c, i) => c.classList.toggle('active', i === 0));
-  document.getElementById('sortSel').value     = 'popularity';
+  document.getElementById('sortSel').value = 'popularity';
+  document.getElementById('typeSel').value = 'all';
   document.getElementById('searchInput').value = '';
   document.querySelector('.section-title').innerHTML = 'Trending Today <small id="resultCount"></small>';
+  setType(null, 'all');
   loadTrending();
 }

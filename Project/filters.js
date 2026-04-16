@@ -11,8 +11,9 @@ export function setItems(items) {
 // ── TYPE FILTER ───────────────────────────────────────────
 export function setType(btn, type) {
   currentType = type;
-  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
+  // sync dropdown if it exists
+  const sel = document.getElementById('typeSel');
+  if (sel) sel.value = type;
   renderGrid(filterItems());
 }
 
