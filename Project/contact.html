@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phoenix – Deine Filmdatenbank</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="nav-pillbar">
+      <div class="pill-logo">PHOENIX</div>
+
+
+    </div>
+
+    
+  </div>
+</nav>
+
+
+<!-- ── MAIN ── -->
+<main>
+
+  <div class="section-title">
+    Kontakt <small id="resultCount"></small>
+  </div>
+
+  <!-- Dynamischer Bereich -->
+  <div id="contact" class="contact-grid"></div>
+
+  <!-- Statischer Bereich -->
+  <div class="contact-static">
+
+    <div class="contact-card">
+      <h3>📧 E-Mail</h3>
+      <p>info@phoenix.at</p>
+    </div>
+
+    <div class="contact-card">
+      <h3>💬 Support</h3>
+      <p>Antwort innerhalb von 24 Stunden</p>
+    </div>
+
+    <div class="contact-card">
+      <h3>🌍 Standort</h3>
+      <p>Österreich</p>
+    </div>
+
+  </div>
+
+  <!-- Kontaktformular -->
+  <div class="contact-form">
+    <h3>Nachricht senden</h3>
+
+    <form onsubmit="sendMessage(event)">
+      <input type="text" placeholder="Dein Name" required>
+      <input type="email" placeholder="Deine E-Mail" required>
+      <textarea placeholder="Deine Nachricht..." required></textarea>
+
+      <button type="submit">Senden</button>
+    </form>
+  </div>
+
+
+
+</body>
+</html>
