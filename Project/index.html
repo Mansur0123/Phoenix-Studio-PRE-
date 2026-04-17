@@ -1,24 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phoenix – Deine Filmdatenbank</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-
+<!-- NAVBAR -->
 <nav class="topbar">
   <div class="topbar-inner">
+
     <div class="nav-pillbar">
       <div class="pill-logo">
-  <span class="logo-left">PHO</span><span class="logo-right">ENIX</span>
-</div>
+        <span class="logo-left">PHO</span><span class="logo-right">ENIX</span>
+      </div>
 
       <button class="nav-pill active" id="navMain" onclick="goHome()">🎬 Entdecken</button>
-
       <button class="nav-pill active watchlist-btn" onclick="showWatchlistToast()">🔖 Watchlist</button>
     </div>
 
@@ -31,9 +34,12 @@
       />
       <button onclick="doSearch()">Suchen</button>
     </div>
+
+
   </div>
 </nav>
 
+<!-- FILTER -->
 <div class="filters">
   <div class="filter-group-row">
 
@@ -64,45 +70,83 @@
     </div>
 
     <button class="reset-btn" onclick="resetFilters()">✕ Reset</button>
+
   </div>
 </div>
 
-<!-- ── MAIN ── -->
+<!-- MAIN -->
 <main>
-  <div class="section-title">Trending Today <small id="resultCount"></small></div>
+  <div class="section-title">
+    Trending Today <small id="resultCount"></small>
+  </div>
   <div id="content"></div>
 </main>
 
-<!-- ── MODAL (GEÄNDERT) ── -->
+<!-- FILM MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
   <div class="modal">
     <div id="modalContent"></div>
   </div>
 </div>
 
-<!-- ── TOAST ── -->
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settingsOverlay" onclick="if(event.target===this) closeSettings()">
+  <div class="modal">
+    <div class="modal-inner">
+
+
+      <div class="modal-section">
+        <div class="modal-section-title">Darstellung</div>
+        <label>
+          <input type="checkbox" id="darkModeToggle" checked>
+          Dark Mode
+        </label>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-title">Sonstiges</div>
+        <button class="btn-secondary" onclick="clearWatchlist()">
+          Watchlist löschen
+        </button>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-primary" onclick="closeSettings()">Schließen</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
+
     <div class="footer-brand">
       <span class="footer-logo">PHOENIX</span>
-      
     </div>
+
     <div class="footer-divider"></div>
+
     <nav class="footer-nav">
       <a href="about.html" class="footer-link"><span class="footer-link-icon">✦</span> About</a>
       <a href="contact.html" class="footer-link"><span class="footer-link-icon">✦</span> Contact</a>
     </nav>
+
     <div class="footer-divider"></div>
+
     <div class="footer-bottom">
       <span>Daten von <strong>TMDB</strong> – The Movie Database</span>
       <span class="footer-copy">© 2026 Phoenix</span>
     </div>
+
   </div>
 </footer>
 
 <script type="module" src="main.js"></script>
+
 </body>
-</html>
+

@@ -88,3 +88,4 @@ function resetFilters() {
   setType(null, 'all');
   loadTrending();
 }
+
