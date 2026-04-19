@@ -2,6 +2,7 @@ import { apiFetch, showLoading, showError } from './api.js';
 import { renderGrid } from './cards.js';
 import { setItems, filterItems, setType, applySort, currentType } from './filters.js';
 import { closeModal, openModal, setRating, saveReview, deleteReview } from './modal.js';
+import { setGenre } from './filters.js';
 
 // ── EXPOSE GLOBALS (needed by inline HTML onclick handlers) ──
 window.closeModal  = closeModal;
@@ -16,7 +17,7 @@ window.deleteReview = deleteReview;
 window.goHome      = goHome;
 window.applyTypeFilter = applyTypeFilter;
 window.showWatchlistToast = showWatchlistToast;
-
+window.applyGenreFilter = applyGenreFilter;
 // ── INIT ─────────────────────────────────────────────────
 window.onload = () => loadTrending();
 
@@ -28,6 +29,11 @@ function goHome() {
   setType(null, 'all');
   document.querySelector('.section-title').innerHTML = 'Trending Today <small id="resultCount"></small>';
   loadTrending();
+}
+
+function applyGenreFilter() {
+  const sel = document.getElementById('genreSel');
+  setGenre(sel.value);
 }
 
 // ── WATCHLIST TOAST ───────────────────────────────────────
@@ -85,6 +91,8 @@ function resetFilters() {
   document.getElementById('typeSel').value = 'all';
   document.getElementById('searchInput').value = '';
   document.querySelector('.section-title').innerHTML = 'Trending Today <small id="resultCount"></small>';
+  document.getElementById('genreSel').value = 'all';
+  setGenre('all');
   setType(null, 'all');
   loadTrending();
 }
