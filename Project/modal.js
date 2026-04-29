@@ -77,6 +77,16 @@ function renderModalContent(details, type, savedRating, savedReview) {
             <span class="modal-tag">${year || '–'}</span>
             <span class="modal-tag">${runtime}</span>
           </div>
+
+          <button class="btn-watchlist" onclick='addToWatchlistFlow(${JSON.stringify({
+            tmdb_id: details.id,
+            media_type: type,
+            title: title,
+            poster_path: details.poster_path || null,
+            release_year: year || null,
+          }).replace(/'/g, "&#39;")})'>
+            🔖 Zur Watchlist hinzufügen
+          </button>
           
           <div class="modal-meta-row">
             <div class="tmdb-big">

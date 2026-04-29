@@ -29,6 +29,10 @@ export function buildCard(item, i) {
   <div class="card-img-wrap">
     ${poster}
     <span class="card-type-badge ${type === 'movie' ? 'badge-movie' : 'badge-tv'}">${type === 'movie' ? 'Film' : 'Serie'}</span>
+    <button class="card-add-btn" title="Zur Watchlist hinzufügen"
+            onclick="event.stopPropagation(); addToWatchlistFromCard(${item.id},'${type}')">
+      +
+    </button>
   </div>
   <div class="card-body">
     <div class="card-title">${escHtml(title)}</div>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phoenix – Meine Watchlists</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+
+    <div class="nav-pillbar">
+      <div class="pill-logo">
+        <span class="logo-left">PHO</span><span class="logo-right">ENIX</span>
+      </div>
+
+      <button class="nav-pill" onclick="window.location.href='index.html'">🎬 Entdecken</button>
+      <button class="nav-pill active watchlist-btn">🔖 Watchlist</button>
+    </div>
+
+    <div id="authSlot" class="auth-slot"></div>
+
+  </div>
+</nav>
+
+<main class="watchlist-page">
+
+  <div id="notLoggedIn" class="empty" style="display:none;">
+    <div class="empty-icon">🔐</div>
+    <h3>Nicht angemeldet</h3>
+    <p>Melde dich an, um Watchlists zu nutzen.</p>
+    <button class="btn-primary" onclick="doLogin()" style="margin-top:1rem;">Anmelden / Registrieren</button>
+  </div>
+
+  <div id="loggedInView" style="display:none;">
+
+    <div class="watchlist-header">
+      <h1 class="page-title">🔖 Meine Watchlists</h1>
+      <button class="btn-primary" onclick="newWatchlist()">+ Neue Watchlist</button>
+    </div>
+
+    <div class="watchlist-tabs" id="watchlistTabs"></div>
+
+    <div class="watchlist-actions" id="watchlistActions"></div>
+
+    <div id="itemsContainer"></div>
+
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">PHOENIX</span>
+    </div>
+    <div class="footer-divider"></div>
+    <nav class="footer-nav">
+      <a href="about.html" class="footer-link"><span class="footer-link-icon">✦</span> About</a>
+      <a href="contact.html" class="footer-link"><span class="footer-link-icon">✦</span> Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>Daten von <strong>TMDB</strong> – The Movie Database</span>
+      <span class="footer-copy">© 2026 Phoenix</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="watchlist-page.js"></script>
+
+</body>
+</html>

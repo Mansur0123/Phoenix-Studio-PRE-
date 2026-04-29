@@ -1,8 +1,10 @@
-import { apiFetch, showLoading, showError } from './api.js';
+import { apiFetch, showLoading, showError, showToast } from './api.js';
 import { renderGrid } from './cards.js';
-import { setItems, filterItems, setType, applySort, currentType } from './filters.js';
+import { setItems, filterItems, setType, applySort, currentType, allItems } from './filters.js';
 import { closeModal, openModal, setRating, saveReview, deleteReview } from './modal.js';
 import { setGenre } from './filters.js';
+import { fetchUser, renderAuthUI } from './auth.js';
+import { addToWatchlistFlow } from './watchlist.js';
 
 // ── EXPOSE GLOBALS (needed by inline HTML onclick handlers) ──
 window.closeModal  = closeModal;
@@ -16,10 +18,39 @@ window.saveReview  = saveReview;
 window.deleteReview = deleteReview;
 window.goHome      = goHome;
 window.applyTypeFilter = applyTypeFilter;
-window.showWatchlistToast = showWatchlistToast;
 window.applyGenreFilter = applyGenreFilter;
+window.addToWatchlistFlow = addToWatchlistFlow;
+window.addToWatchlistFromCard = addToWatchlistFromCard;
+
+function addToWatchlistFromCard(id, type) {
+  const item = allItems.find(i => i.id === id && i.media_type === type);
+  if (!item) return;
+  addToWatchlistFlow({
+    tmdb_id: item.id,
+    media_type: type,
+    title: item.title || item.name || 'Unbekannt',
+    poster_path: item.poster_path || null,
+    release_year: (item.release_date || item.first_air_date || '').slice(0, 4) || null,
+  });
+}
+
 // ── INIT ─────────────────────────────────────────────────
-window.onload = () => loadTrending();
+window.onload = async () => {
+  await fetchUser();
+  renderAuthUI();
+
+  // Toast nach erfolgreichem Login (?login=ok)
+  const params = new URLSearchParams(location.search);
+  if (params.get('login') === 'ok') {
+    showToast('✓ Erfolgreich angemeldet');
+    history.replaceState({}, '', location.pathname);
+  } else if (params.get('login') === 'fail') {
+    showToast('✗ Anmeldung fehlgeschlagen');
+    history.replaceState({}, '', location.pathname);
+  }
+
+  loadTrending();
+};
 
 // ── GO HOME (Entdecken-Button) ────────────────────────────
 function goHome() {
@@ -34,14 +65,6 @@ function goHome() {
 function applyGenreFilter() {
   const sel = document.getElementById('genreSel');
   setGenre(sel.value);
-}
-
-// ── WATCHLIST TOAST ───────────────────────────────────────
-function showWatchlistToast() {
-  const t = document.getElementById('toast');
-  t.textContent = '🔖 Watchlist kommt bald!';
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
 }
 
 // ── TYPE FILTER VIA DROPDOWN ──────────────────────────────
