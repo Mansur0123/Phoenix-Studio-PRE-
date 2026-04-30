@@ -26,45 +26,48 @@
 <!-- ── MAIN ── -->
 <main>
 
-  <div class="section-title">
-    Kontakt <small id="resultCount"></small>
-  </div>
+  <div class="contact-wrapper">
 
-  <!-- Dynamischer Bereich -->
-  <div id="contact" class="contact-grid"></div>
+  <!-- INFO CARDS -->
+  <div class="contact-cards">
 
-  <!-- Statischer Bereich -->
-  <div class="contact-static">
-
-    <div class="contact-card">
-      <h3>📧 E-Mail</h3>
+    <div class="contact-card modern">
+      <div class="icon">📧</div>
+      <h3>E-Mail</h3>
       <p>info@phoenix.at</p>
     </div>
 
-    <div class="contact-card">
-      <h3>💬 Support</h3>
+    <div class="contact-card modern">
+      <div class="icon">💬</div>
+      <h3>Support</h3>
       <p>Antwort innerhalb von 24 Stunden</p>
     </div>
 
-    <div class="contact-card">
-      <h3>🌍 Standort</h3>
+    <div class="contact-card modern">
+      <div class="icon">🌍</div>
+      <h3>Standort</h3>
       <p>Österreich</p>
     </div>
 
   </div>
 
-  <!-- Kontaktformular -->
-  <div class="contact-form">
+  <!-- FORM -->
+  <div class="contact-form modern">
     <h3>Nachricht senden</h3>
 
     <form onsubmit="sendMessage(event)">
-      <input type="text" placeholder="Dein Name" required>
-      <input type="email" placeholder="Deine E-Mail" required>
+      <div class="form-row">
+        <input type="text" placeholder="Dein Name" required>
+        <input type="email" placeholder="Deine E-Mail" required>
+      </div>
+
       <textarea placeholder="Deine Nachricht..." required></textarea>
 
       <button type="submit">Senden</button>
     </form>
   </div>
+
+</div>
 
 
 
