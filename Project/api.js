@@ -35,5 +35,5 @@ export function showLoading() {
 
 export function showError(msg) {
   document.getElementById('content').innerHTML =
-    `<div class="empty"><div class="empty-icon">⚠️</div><h3>Fehler</h3><p>${msg}</p></div>`;
+    `<div class="empty"><div class="empty-icon"></div><h3>Fehler</h3><p>${msg}</p></div>`;
 }

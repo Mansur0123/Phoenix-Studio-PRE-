@@ -51,7 +51,7 @@ function renderTabs() {
   wrap.innerHTML = lists.map(l => `
     <button class="watchlist-tab ${l.id === activeListId ? 'active' : ''}"
             data-id="${l.id}">
-      📋 ${escHtml(l.name)}
+      ${escHtml(l.name)}
       <span class="tab-count">${l.item_count}</span>
     </button>
   `).join('');
@@ -73,8 +73,8 @@ function renderActions() {
 
   wrap.innerHTML = `
     <span class="active-list-name">${escHtml(list.name)}</span>
-    <button class="btn-secondary btn-small" onclick="renameList()">✏️ Umbenennen</button>
-    <button class="btn-danger btn-small" onclick="deleteList()">🗑️ Liste löschen</button>
+    <button class="btn-secondary btn-small" onclick="renameList()">Umbenennen</button>
+    <button class="btn-danger btn-small" onclick="deleteList()">Liste löschen</button>
   `;
 }
 
@@ -93,7 +93,7 @@ async function renderItems() {
   if (!items.length) {
     container.innerHTML = `
       <div class="empty">
-        <div class="empty-icon">🎬</div>
+        <div class="empty-icon"></div>
         <h3>Diese Watchlist ist leer</h3>
         <p>Geh auf <a href="index.html" style="color:var(--accent);">Entdecken</a> und füge Filme hinzu.</p>
       </div>
@@ -126,7 +126,7 @@ async function renderItems() {
 function buildItemCard(item) {
   const poster = item.poster_path
     ? `<img class="card-img" src="${IMG_SM}${item.poster_path}" alt="${escHtml(item.title)}" loading="lazy">`
-    : `<div class="card-img-placeholder">🎬</div>`;
+    : `<div class="card-img-placeholder"></div>`;
 
   return `
 <div class="card">

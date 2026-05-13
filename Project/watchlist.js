@@ -89,7 +89,7 @@ function pickListDialog(lists) {
     overlay.style.zIndex = '500';
 
     const buttons = lists.map(l =>
-      `<button class="picker-item" data-id="${l.id}">📋 ${escapeHtml(l.name)} <span class="picker-count">(${l.item_count})</span></button>`
+      `<button class="picker-item" data-id="${l.id}">${escapeHtml(l.name)} <span class="picker-count">(${l.item_count})</span></button>`
     ).join('');
 
     overlay.innerHTML = `

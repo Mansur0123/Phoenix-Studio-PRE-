@@ -21,8 +21,8 @@
         <span class="logo-left">PHO</span><span class="logo-right">ENIX</span>
       </div>
 
-      <button class="nav-pill active" id="navMain" onclick="goHome()">🎬 Entdecken</button>
-      <button class="nav-pill watchlist-btn" onclick="window.location.href='watchlist.html'">🔖 Watchlist</button>
+      <button class="nav-pill active" id="navMain" onclick="goHome()">Entdecken</button>
+      <button class="nav-pill watchlist-btn" onclick="window.location.href='watchlist.html'">Watchlist</button>
     </div>
 
     <div class="search-bar">
@@ -49,8 +49,8 @@
       <div class="custom-select-wrap">
         <select class="custom-select" id="typeSel" onchange="applyTypeFilter(this)">
           <option value="all">Alle</option>
-          <option value="movie">🎬 Filme</option>
-          <option value="tv">📺 Serien</option>
+          <option value="movie">Filme</option>
+          <option value="tv">Serien</option>
         </select>
         <span class="select-arrow">▾</span>
       </div>
@@ -61,10 +61,10 @@
       <div class="custom-select-wrap">
         <select class="custom-select" id="sortSel" onchange="applySort()">
           <option value="" selected>Category</option>
-          <option value="popularity">🔥 Beliebtheit</option>
-          <option value="rating">⭐ TMDB Bewertung</option>
-          <option value="name">🔤 Name (A–Z)</option>
-          <option value="year">📅 Erscheinungsjahr</option>
+          <option value="popularity">Beliebtheit</option>
+          <option value="rating">TMDB Bewertung</option>
+          <option value="name">Name (A–Z)</option>
+          <option value="year">Erscheinungsjahr</option>
         </select>
         <span class="select-arrow">▾</span>
       </div>
@@ -75,12 +75,30 @@
   <div class="custom-select-wrap">
     <select class="custom-select" id="genreSel" onchange="applyGenreFilter()">
       <option value="all">Alle</option>
-      <option value="28">🔥 Action</option>
-      <option value="35">😂 Comedy</option>
-      <option value="18">🎭 Drama</option>
-      <option value="10749">❤️ Romance</option>
-      <option value="27">👻 Horror</option>
-      <option value="878">🚀 Sci-Fi</option>
+      <option value="28">Action</option>
+      <option value="35">Comedy</option>
+      <option value="18">Drama</option>
+      <option value="10749">Romance</option>
+      <option value="27">Horror</option>
+<!--
+<option value="878">Sci-Fi</option>
+<option value="878">Mystery</option>
+<option value="878">Fantasy</option>
+<option value="878">Krimi</option>
+<option value="878">Western</option>
+<option value="878">Dokumentation</option>
+<option value="878">Musik</option>
+<option value="878">Krieg</option>
+<option value="878">Historie</option>
+<option value="878">TV-Film</option>
+<option value="878">Animation</option>
+<option value="878">Familie</option>
+<option value="878">Abenteuer</option>
+<option value="878">Thriller</option>
+-->
+
+
+
     </select>
     <span class="select-arrow">▾</span>
   </div>
@@ -143,7 +161,9 @@
   <div class="footer-inner">
 
     <div class="footer-brand">
-      <span class="footer-logo">PHOENIX</span>
+      <div class="pill-logo">
+      <span class="logo-left">PHO</span><span class="logo-right">ENIX</span>
+      </div>
     </div>
 
     <div class="footer-divider"></div>

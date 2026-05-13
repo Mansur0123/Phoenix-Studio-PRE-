@@ -7,7 +7,7 @@ export function renderGrid(items, containerId = 'content') {
   if (rc) rc.textContent = items.length ? `${items.length} Ergebnisse` : '';
 
   if (!items.length) {
-    el.innerHTML = `<div class="empty"><div class="empty-icon">🎬</div><h3>Keine Ergebnisse</h3><p>Versuche eine andere Suche oder ändere die Filter.</p></div>`;
+    el.innerHTML = `<div class="empty"><div class="empty-icon"></div><h3>Keine Ergebnisse</h3><p>Versuche eine andere Suche oder ändere die Filter.</p></div>`;
     return;
   }
   el.innerHTML = `<div class="grid">${items.map((item, i) => buildCard(item, i)).join('')}</div>`;
@@ -22,7 +22,7 @@ export function buildCard(item, i) {
 
   const poster = item.poster_path
     ? `<img class="card-img" src="${IMG_SM}${item.poster_path}" alt="${escHtml(title)}" loading="lazy">`
-    : `<div class="card-img-placeholder">🎬</div>`;
+    : `<div class="card-img-placeholder"></div>`;
 
   return `
 <div class="card" style="animation-delay:${i * 0.04}s" onclick="openModal(${item.id},'${type}')">

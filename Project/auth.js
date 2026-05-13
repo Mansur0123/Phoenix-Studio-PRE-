@@ -143,22 +143,22 @@ export function renderAuthUI() {
         </button>
         <div class="user-dropdown" id="userDropdown">
           <div class="user-dropdown-email">${currentUser.email}</div>
-          <button class="user-dropdown-item" onclick="window.location.href='watchlist.html'">🔖 Meine Watchlists</button>
+          <button class="user-dropdown-item" onclick="window.location.href='watchlist.html'">Meine Watchlists</button>
           <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
-            <span id="themeIcon">${document.body.classList.contains('light-mode') ? '🌙' : '☀️'}</span>
+            <span id="themeIcon">${document.body.classList.contains('light-mode') ? '' : ''}</span>
             <span id="themeLabel">${document.body.classList.contains('light-mode') ? 'Dark Mode' : 'Light Mode'}</span>
             <div class="theme-toggle-track" style="margin-left:auto">
               <div class="theme-toggle-thumb"></div>
             </div>
           </button>
-          <button class="user-dropdown-item logout" onclick="doLogout()">🚪 Abmelden</button>
+          <button class="user-dropdown-item logout" onclick="doLogout()">Abmelden</button>
         </div>
       </div>
     `;
   } else {
     slot.innerHTML = `
       <button class="nav-pill login-btn" onclick="openAuthModal()">
-        <span style="margin-right:0.4rem;">🔐</span> Anmelden
+        <span style="margin-right:0.4rem;"></span> Anmelden
       </button>
     `;
   }
@@ -281,7 +281,7 @@ function toggleTheme() {
   const isLight = document.body.classList.toggle('light-mode');
   const icon = document.getElementById('themeIcon');
   const label = document.getElementById('themeLabel');
-  if (icon) icon.textContent = isLight ? '🌙' : '☀️';
+  if (icon) icon.textContent = isLight ? '' : '';
   if (label) label.textContent = isLight ? 'Dark Mode' : 'Light Mode';
 }
 

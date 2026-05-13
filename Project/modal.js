@@ -85,7 +85,7 @@ function renderModalContent(details, type, savedRating, savedReview) {
             poster_path: details.poster_path || null,
             release_year: year || null,
           }).replace(/'/g, "&#39;")})'>
-            🔖 Zur Watchlist hinzufügen
+            Zur Watchlist hinzufügen
           </button>
           
           <div class="modal-meta-row">
@@ -95,8 +95,8 @@ function renderModalContent(details, type, savedRating, savedReview) {
               <div class="tmdb-big-stars">${renderStars(voteAverage)}</div>
             </div>
             <div class="tmdb-info">
-              <div>⭐ ${voteCount} Bewertungen</div>
-              <div>🎭 ${genres}</div>
+              <div>${voteCount} Bewertungen</div>
+              <div>${genres}</div>
             </div>
           </div>
         </div>
@@ -104,18 +104,18 @@ function renderModalContent(details, type, savedRating, savedReview) {
       
       <div class="modal-body">
         <div class="modal-section">
-          <h3 class="modal-section-title">📖 Beschreibung</h3>
+          <h3 class="modal-section-title">Beschreibung</h3>
           <p class="modal-desc">${escHtml(overview)}</p>
         </div>
         
         <div class="modal-section">
-          <h3 class="modal-section-title">🎭 Besetzung</h3>
+          <h3 class="modal-section-title">Besetzung</h3>
           <p class="modal-cast">${escHtml(cast)}</p>
         </div>
         
         ${trailer ? `
         <div class="modal-section">
-          <h3 class="modal-section-title">🎬 Trailer</h3>
+          <h3 class="modal-section-title">Trailer</h3>
           <div class="modal-trailer">
             <iframe 
               width="100%" 
@@ -130,7 +130,7 @@ function renderModalContent(details, type, savedRating, savedReview) {
         
         <!-- REVIEW SECTION -->
         <div class="modal-section review-section">
-          <h3 class="modal-section-title">✍️ Deine Bewertung</h3>
+          <h3 class="modal-section-title">Deine Bewertung</h3>
           
           <div class="rating-container">
             <div class="rating-stars" id="ratingStars">
@@ -148,10 +148,10 @@ function renderModalContent(details, type, savedRating, savedReview) {
           
           <div class="review-actions">
             <button class="btn-primary" onclick="saveReview('${type}', ${details.id})">
-              💾 Bewertung speichern
+              Bewertung speichern
             </button>
             <button class="btn-secondary" onclick="deleteReview('${type}', ${details.id})">
-              🗑️ Löschen
+              Löschen
             </button>
           </div>
           
@@ -170,7 +170,7 @@ function renderStars(rating) {
   const stars = Math.round(rating / 2);
   let starsHtml = '';
   for (let i = 0; i < 5; i++) {
-    starsHtml += i < stars ? '⭐' : '☆';
+    starsHtml += i < stars ? '' : '☆';
   }
   return starsHtml;
 }
@@ -210,7 +210,7 @@ export function saveReview(type, id) {
   const messageEl = document.getElementById('reviewMessage');
   
   if (rating === 0) {
-    messageEl.innerHTML = '<span style="color: #ff6b35;">⚠️ Bitte wähle eine Bewertung (1-10 Sterne)</span>';
+    messageEl.innerHTML = '<span style="color: #ff6b35;">Bitte wähle eine Bewertung (1-10 Sterne)</span>';
     setTimeout(() => { messageEl.innerHTML = ''; }, 3000);
     return;
   }
@@ -219,7 +219,7 @@ export function saveReview(type, id) {
   localStorage.setItem(`rating_${type}_${id}`, rating);
   localStorage.setItem(`review_${type}_${id}`, review);
   
-  messageEl.innerHTML = '<span style="color: #e8c547;">✅ Bewertung gespeichert!</span>';
+  messageEl.innerHTML = '<span style="color: #e8c547;">Bewertung gespeichert!</span>';
   setTimeout(() => { messageEl.innerHTML = ''; }, 3000);
   
   showToast('Deine Bewertung wurde gespeichert!');
@@ -239,7 +239,7 @@ export function deleteReview(type, id) {
   document.getElementById('reviewText').value = '';
   
   const messageEl = document.getElementById('reviewMessage');
-  messageEl.innerHTML = '<span style="color: #e8c547;">🗑️ Bewertung gelöscht</span>';
+  messageEl.innerHTML = '<span style="color: #e8c547;">Bewertung gelöscht</span>';
   setTimeout(() => { messageEl.innerHTML = ''; }, 3000);
   
   showToast('Bewertung wurde gelöscht');
